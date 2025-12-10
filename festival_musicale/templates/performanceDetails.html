@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}{{performance['artist']}}{% endblock %}
+
+{% block styles %} 
+    <link rel="stylesheet" href="{{url_for('static', filename='css/performanceDetails.css')}}">
+
+{% endblock %}
+
+{% block main %} 
+
+    <section class="performanceDetails">
+
+        <h2 class="lexend-500">{{performance['artist']}}</h2>
+        
+        <div class="imageBox">
+            <img src="{{ url_for('static', filename=performance['image']) }}" alt="imgArtist" width="300px" height="300px">
+        </div>
+
+
+        {% if performance['day'] == 'friday' %}
+            <h3 class="lexend-500">Friday 20th June</h3>
+        {% elif performance['day'] == 'saturday' %}
+            <h3 class="lexend-500">Saturday 21st June</h3>
+        {% else %}
+            <h3 class="lexend-500">Sunday 22nd June</h3>
+        {% endif %}
+        
+        <h4 class="lexend-500">Stage {{performance['stage']}}</h4>
+        <h4 class="lexend-500">Starting from {{performance['start']}}</h4>
+
+        <p class="lexend-500">{{performance['description']}}</p>
+
+    </section>
+
+    {% block scripts %}
+
+    {% endblock %}
+{% endblock %}

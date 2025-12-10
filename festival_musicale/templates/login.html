@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block main %}
+    <form action="/auth/{{target}}" method="POST">
+        <div class="mb-3">
+            <label for="username" class="customLabel form-label staatliches-regular">type username or Email</label>
+            <input type="text" class="custom-form form-control" id="username" placeholder="milesDavis" name="username-mail" required>
+            {% if w_user %}
+                <p>Incorrect Username or Email</p>
+            {% endif %}
+        </div> 
+
+        <div class="mb-3">
+            <label for="password" class="customLabel form-label staatliches-regular">Password</label>
+            <input type="password" class="custom-form form-control" id="password" placeholder="La tua password" required name="password" 
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            >
+            {% if w_pw %}
+                <p>Incorrect password</p>
+            {% endif %}
+        </div>
+
+        <button class="btn btn-outline-success" type="submit">Login</button>
+    </form>
+{% endblock %}

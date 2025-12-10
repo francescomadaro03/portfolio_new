@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %} Sign In {% endblock %}
+
+{% block main %} 
+
+    <form class="formSignIn" action="/newUser" method="POST">
+        <div class="bd-example m-0 border-0"> <div class="mb-3">
+            <label for="name" class="customLabel form-label staatliches-regular">Name</label>
+            <input type="text" class="custom-form form-control" id="name" name="name" placeholder="Miles" required>
+        </div>
+
+        <div class="bd-example m-0 border-0"> <div class="mb-3">
+            <label for="surname" class="customLabel form-label staatliches-regular">Surname</label>
+            <input type="text" class="custom-form form-control" id="surname" placeholder="Davis" name="surname" required>
+        </div>
+
+        <div class="bd-example m-0 border-0"> <div class="mb-3">
+            <label for="mailInput" class="customLabel form-label staatliches-regular">Email</label>
+            <input type="email" class="custom-form form-control" id="mailInput" placeholder="milesdavis@jazz.com" name="email" required>
+            {% if w_mail %}
+                <p class="lexend-500" style="color: #F24B4B;">Mail already registered</p>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            <label for="username" class="customLabel form-label staatliches-regular">Username</label>
+            <input type="text" class="custom-form form-control" id="username" placeholder="milesDavis" name="username" required>
+            {% if w_username %}
+                <p>Username non disponibile</p>
+            {% endif %}
+        </div> 
+
+        <div class="mb-3">
+            <label for="password" class="customLabel form-label staatliches-regular">Password</label>
+            <input type="password" class="custom-form form-control" id="password" placeholder="your password" required name="password" 
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            title="Password must contain at least 8 characters, including one uppercase letter, one lowercase letter and one number">
+            
+
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="customLabel form-label staatliches-regular">Confirm Password</label>
+
+            <input type="password" class="custom-form form-control" id="password" placeholder="confirm password" required name="confirmPassword" 
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+            {% if w_confirm==True %}
+                <p class="lexend-500">The passwords do not correspond</p>
+            {% endif %}
+            
+        </div>
+
+        <div class="mb-3">
+            <label for="selectType" class="customLabel form-label staatliches-regular">You will sign in as...</label>
+            <select class="custom-select form-select" aria-label="select-type-user" id="selectType" name="type" required>
+                <option selected>--Select--</option>
+                <option value="partecipante">Attendee</option>
+                <option value="organizzatore">Organizer</option>
+            </select>
+        </div>
+        
+        <button type="submit" class="btn btn-outline-success">Sign in</button>
+    </form>
+    
+
+
+{% endblock %}

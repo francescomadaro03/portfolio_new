@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/checkout.css')}}">
+
+{% endblock %}
+
+{% block main %}
+
+    <form class="checkout form" action="/buyTicket" method="POST">
+
+        <div class="row g-3">
+            <div class="col">
+                <label for="nome" class="form-label staatliches-regular">FULL NAME</label>
+                <input name="name" class="custom-form form-control mb-3" id="nome" value="{{current_user.name}}" minlength="3" maxlength="40">
+            </div>
+
+            <div class="col">
+                <label for="surname" class="form-label staatliches-regular">surname</label>
+                <input name="surname" class="custom-form form-control mb-3" id="surname" value="{{current_user.surname}}" minlength="3" maxlength="40">
+            </div>
+        </div>
+
+
+
+        <label for="email" class="form-label staatliches-regular">Email</label>
+        <input name="email" class="custom-form form-control mb-3" id="email" readonly value="{{current_user.email}}">
+
+        <label for="email" class="form-label staatliches-regular">ticket</label>
+        <input name="ticketType" class="custom-form form-control mb-3" id="ticket" readonly value="{{tt}}">
+
+        {% if tt == 'Single-day Pass'%}
+        <select class="custom-select form-select mt-4 mb-3" name="day">
+            <option selected>--select day--</option>
+            <option value="friday">Friday</option>
+            <option value="saturday">Saturday</option>
+            <option value="sunday">Sunday</option>
+        </select>
+
+        {% elif tt == 'Two-day Pass'%}
+            <select class="custom-select form-select mt-4 mb-3" name="day">
+                <option selected>--select days--</option>
+                <option value="friday-saturday">Friday-Saturday</option>
+                <option value="saturday-sunday">Saturday-Sunday</option>
+            </select>
+        {% else %}
+            <input type="hidden" value="friday-saturday-sunday" name="day">
+
+        {% endif %}
+        {% if invalid_day %}
+            <p class="error">Selected Day not featured</p>
+        {% endif %}
+
+        <div class="mb-3">
+            <label for="address" class="form-label staatliches-regular">Full Address</label>
+            <input type="text"class="custom-form form-control mb-3" id="address" placeholder="3, Abbey Rd." required name="address">
+        </div>
+
+        <div class="row g-3">
+
+            <div class="col-md-4">
+                <label for="country" class="form-label staatliches-regular">State</label>
+                <select class="custom-select form-select" id="country">
+                    <option>Italia</option>
+                    <option selected>Altro</option>
+
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="città" class="form-label staatliches-regular">City</label>
+                <input type="text" required class="custom-form form-control" name="city" id="città" placeholder="London" minlength="3" maxlength="40">
+            </div>
+
+            <div class="col-md-2">
+                <label for="cap" class="form-label staatliches-regular">Zip Code</label>
+                <input type="text" required class="custom-form form-control" name="cap" id="cap" placeholder="Cap"
+                pattern="\d{5}"
+                title="inserire il cap corretto">
+            </div>
+
+            <div class="col-md-2">
+                <label for="prov" class="form-label staatliches-regular">Prov</label>
+                <input type="text" required class="custom-form form-control" name="prov" id="prov" placeholder="Prov"
+                pattern="[A-Za-z]{2}"
+                title="inserire solo codice provincia">
+            </div>
+
+            {% if w_personal %}
+            <div class="col-12" >
+                <p class="error">Invalid personal data</p>
+            </div>
+            {% endif %}
+
+        <hr class="my-4">
+
+        <div class="row gy-3"> 
+            <div class="col-md-6"> 
+                <label for="cc-name" class="form-label staatliches-regular">Name on card</label> 
+                <input type="text" class="custom-form form-control" name="cc-name" id="cc-name" placeholder="" required="" pattern="^[A-Za-zÀ-ÿ\s'-]+$"> 
+                <small class="lexend-500">Full name as displayed on card</small> 
+                <div class="invalid-feedback">
+                    Name on card is required
+                </div> 
+            </div> 
+            <div class="col-md-6"> 
+                <label for="cc-number"class="form-label staatliches-regular">Credit card number</label> 
+                <input type="text" class="custom-form form-control" name="cc-number" id="cc-number" placeholder="" required=""
+                pattern="(? \d{4} ?){4}"
+                title="inserire il numero della carta con o senza spazi">
+
+            </div> 
+            <div class="col-md-3"> 
+                <label for="cc-expiration" class="form-label staatliches-regular">Expiration</label> 
+                <input type="text" name="expiration-date" class="custom-form form-control" id="cc-expiration" placeholder="" required="" pattern="(0[1-9]|1[0-2])/[0-9]{2}"
+                title="Inserire un formato valido: mm/aa">
+
+            </div> 
+            <div class="col-md-3"> 
+                <label for="cc-cvv" class="form-label staatliches-regular">CVV</label> 
+                <input type="text" class="custom-form form-control" id="cc-cvv" name="cc-cvv" placeholder="" required=""
+                pattern="[0-9]{3}"
+                title="Inserire formato CVV valido"> 
+                
+            </div> 
+            {% if w_payment %}
+                <div class="col-12">
+                    <p class="error">Invalid payment data</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <button class="btn btn-outline-success mt-4 mb-3">Acquista ora</button>
+
+        
+
+
+
+
+
+        
+
+    </form>
+
+{% endblock %}

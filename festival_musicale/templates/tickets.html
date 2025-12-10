@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}Tickets{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/ticket.css')}}">
+
+{% endblock %}
+
+{% block main%}
+
+    <section class="tickets">
+        <div class="titleTickets">
+            <h2 class="lexend-500">Tickets</h2>
+        </div>
+
+        <ul class="listTickets">
+            <li class="singleTicket">                    
+                <div class="ticketName">                    
+                    <h4 class="lexend-500">Single-day Ticket</h4>
+                    <ul class="ticketInfo">
+                        <li class="lexend-500">Ticket valid for one day at choice</li>
+                        <li class="lexend-500">Full access to all performances for that day</li>
+                        <li class="lexend-500">Join all concerts, DJ sets, and on-site activities on the day of your choice</li>
+                    </ul>
+                    <p class="lexend-500"><a href="{{url_for('checkout', t='singleDay')}}" class="buyNow">Buy now</a></p>
+
+                    <p class="link"></p>
+                </div>
+                <div class="ticketPrice">
+                    <h5 class="lexend-500">20$</h5>
+                </div>
+            </li>
+            <li class="singleTicket">                    
+                <div class="ticketName">                    
+                    <h4 class="lexend-500">Two-day Ticket</h4>
+                    <ul class="ticketInfo">
+                        <li class="lexend-500">Ticket valid for two consecutive day at choice</li>
+                        <li class="lexend-500">Full access to all performances for those days</li>
+                        <li class="lexend-500">Join all concerts, DJ sets, and on-site activities on the day of your choice</li>
+                    </ul>
+                    <p class="lexend-500"><a href="{{url_for('checkout', t='twoDay')}}" class="buyNow">Buy now</a></p>
+
+                </div>
+                <div class="ticketPrice">
+                    <h5 class="lexend-500">35$</h5>
+                </div>
+            </li>
+            <li class="singleTicket">                    
+                <div class="ticketName">                    
+                    <h4 class="lexend-500">Full Pass Ticket</h4>
+                    <ul class="ticketInfo">
+                        <li class="lexend-500">Full access for the entire duration of the festival</li>
+                        <li class="lexend-500">Full access to all performances/li>
+                        <li class="lexend-500">Join all concerts, DJ sets, and on-site activities on the day of your choice</li>
+                    </ul>
+                    <p class="lexend-500"><a href="{{url_for('checkout', t='fullPass')}}" class="buyNow">Buy now</a></p>
+
+                </div>
+                <div class="ticketPrice">
+                    <h5 class="lexend-500">70$</h5>
+                </div>
+            </li>
+        </ul>
+
+         
+    </section>
+
+{% endblock %}

@@ -1,0 +1,180 @@
+.upcomingPerformances {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 15px;
+
+}
+
+.upcomingPerformances h2, .countSection h2, .about h2, .tickets h2 {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.countSection p {
+    font-size: 30px;
+}
+
+.listPerformances, .listTickets{
+
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+
+
+}
+
+.singlePerformance, .draftPerformance, .singleTicket {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    border-top: 1px solid #F24B4B
+
+}
+
+.singlePerformance:hover .artistName, .singlePerformance:hover .ticketName {
+    text-decoration: underline;
+}
+
+.artistName {
+
+    width: 40%;
+
+}
+
+.ticketName {
+    width: 70%;
+}
+
+.artistName h4, .ticketName h4 {
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.dateInfo {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.dateInfo p {
+    font-weight: 400;
+
+}
+
+.filters {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.filters p {
+    margin: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; 
+    flex-grow: 2;
+}
+
+.daySelect {
+    width: 30% !important;
+}
+
+.countDown {
+    display: flex;
+    flex-direction: row;
+    gap:20px
+}
+
+.countDown h3 {
+    font-size: 100px;
+}
+
+.digitBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 120px;
+    max-width: 120px;
+    width: 120px;
+
+}
+
+.digitBox h5 {
+    font-size: 20px;
+}
+
+.tickets {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+}
+
+.about h5 {
+    font-size: 25px;
+}
+
+.titleTickets {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: start;
+    vertical-align: middle;
+
+}
+
+.titleTickets h2 {
+    flex-grow: 1;
+}
+
+.titleTickets p {
+    padding-top: 20px;
+}
+
+.ticketName {
+    flex-grow: 1;
+}
+
+.ticketPrice {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ticketPrice h5 {
+    margin-top: 1%;
+    font-size: 25px;
+}
+
+.searchGenre {
+    display: flex;
+    flex-direction: row;
+    width: 45%;
+}
+
+.searchGenre input {
+    width: 75%;
+}
+
+.searchGenre button {
+    width: 25%;
+}

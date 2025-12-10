@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+{% endblock %}
+
+{% block main %}
+
+    <section class="countSection">
+        <h2 class="lexend-500">Until it starts...</h2>
+        <div class="countDown">
+
+            <div class="digitBox">
+                <h3 id="days"></h3>
+                <h5 class="staatliches-regular">days</h5>
+            </div>
+            
+            <div class="digitBox">
+                <h3 id="hours"></h3>
+                <h5 class="staatliches-regular">hours</h5>
+            </div>
+            <div class="digitBox">
+                <h3 id="minutes"></h3>
+                <h5 class="staatliches-regular">minutes</h5>
+            </div>
+            <div class="digitBox">
+                <h3 id="seconds"></h3>
+                <h5 class="staatliches-regular">seconds</h5>
+            </div>
+    
+        </div>
+
+    </section>
+
+    <section class="upcomingPerformances">
+        <h2 class="lexend-500">Upcoming Shows</h2>
+
+        <div class="filters">
+            <div class="searchGenre">
+                <input type="text" class="custom-form form-control" placeholder="Search genre" id="selectGenre">
+                <button class="btn btn-outline-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    </svg>
+                </button>
+            </div>
+            <select class="daySelect custom-select form-select lexend-500" id="selectDay">
+                <option class="lexend-500" value="" selected>filter by day</option>
+                <option class="lexend-500">friday</option>
+                <option class="lexend-500">saturday</option>
+                <option class="lexend-500">sunday</option>
+            </select>
+
+            <select class="daySelect custom-select form-select lexend-500 " id="selectStage">
+                <option class="lexend-500" value="" selected>filter by stage</option>
+                <option class="lexend-500">Stage A</option>
+                <option class="lexend-500">Stage B</option>
+                <option class="lexend-500">Stage C</option>
+            </select>
+        </div>
+
+        <ul class="listPerformances" id="listPerformances">
+
+            {% for p in perf %}
+                <li class="singlePerformance" onclick="window.location.href = '/details/{{ p.id }}'">
+                    <div class="artistName">                    
+                        <h4 class="lexend-500">{{p['artist']}}</h4>
+                    </div>
+
+                    <div class="dateInfo dayPart">
+                        <p class="lexend-500">{{p['day']}}</p>
+                    </div>
+
+                    <div class="dateInfo">
+                        <p class="lexend-500">{{p['start']}}</p>
+                    </div>
+
+                    <div class="dateInfo stagePart">
+                        <p class="lexend-500">Stage {{p['stage']}}</p>
+                    </div>
+                    <input class="genre" hidden value="{{p['genre']}}">
+
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section class="about">
+        <h2 class="lexend-500">About the festival...</h2>
+        <h5 class="lexend-500">The Montreux Jazz Festival takes place for two weeks every summer in Switzerland, on the shores of Lake Geneva. Created in 1967 by Claude Nobs and directed by Mathieu Jaton since 2013, the Montreux Jazz Festival has become over the years an essential event, generating fantastic stories and legendary performances.</h5>
+         
+    </section>
+
+    <section class="tickets">
+        <div class="titleTickets">
+            <h2 class="lexend-500">Tickets</h2>
+            <p class=" lexend-500"><a href="/tickets" class="link-clean">See more</a></p>
+        </div>
+
+        <ul class="listPerformances" id="listP">
+            <li class="singlePerformance">                    
+                <div class="ticketName">                    
+                    <h4 class="lexend-500">Single-day Ticket</h4>
+                </div>
+                <div class="ticketPrice">
+                    <h5 class="lexend-500">20$</h5>
+                </div>
+            </li>
+            <li class="singlePerformance">                    
+                <div class="ticketName">                    
+                    <h4 class="lexend-500">Two-day Ticket</h4>
+                </div>
+                <div class="ticketPrice">
+                    <h5 class="lexend-500">35$</h5>
+                </div>
+            </li>
+            <li class="singlePerformance">                    
+                <div class="ticketName">                    
+                    <h4 class="lexend-500">Full Pass Ticket</h4>
+                </div>
+                <div class="ticketPrice">
+                    <h5 class="lexend-500">70$</h5>
+                </div>
+            </li>
+        </ul>
+
+         
+    </section>
+
+
+    {% endblock %}
+
+    {% block scripts %} 
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+    const target = new Date(2025,5,27,10)
+    const now = new Date()
+
+    const diff = target.getTime() - now.getTime()
+
+
+    const seconds = Math.ceil(diff / 1000) % 60;  
+    const minutes = Math.ceil(diff / (1000 * 60)) % 60;  
+    const hours = Math.ceil(diff / (1000 * 60 * 60)) % 24; 
+    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));  
+
+    const dayWrap = document.getElementById('days')
+    const hWrap = document.getElementById('hours')
+    const minWrap = document.getElementById('minutes')
+    const secWrap = document.getElementById('seconds')
+    
+    dayWrap.textContent = days
+    hWrap.textContent = hours
+    minWrap.textContent = minutes
+    secWrap.textContent = seconds
+
+    const change = setInterval(() => {
+        let sec = parseInt(secWrap.textContent) -1
+        if(sec === -1){
+            let min = parseInt(minWrap.textContent) - 1
+            sec = 59
+            if(min === -1){
+                let hour = parseInt(hWrap.textContent) - 1
+                min = 59
+                if(hour === -1){
+                    let day = parseInt(dayWrap.textContent) - 1
+                    hour = 59
+                    if(day === -1){
+                        clearInterval(change)
+                    }
+                    if(day<10){
+                        dayWrap.textContent = '0' + day
+                    }
+                    else{dayWrap.textContent = day}
+                
+                }
+                if(hour<10){hWrap.textContent = '0' + hour}
+                else{hWrap = hour}
+
+            }
+            if(min < 10){
+                minWrap.textContent = '0' + min
+            }
+            else{
+                minWrap.textContent = min
+            }
+
+            }
+        if(sec < 10){
+            secWrap.textContent = '0' + sec
+        }
+        else{
+            secWrap.textContent = sec
+        }
+
+
+
+
+    }, 1000)
+
+    console.log(days)
+
+    const selectGenre = document.getElementById('selectGenre');
+    const selectDay = document.getElementById('selectDay');
+    const selectStage = document.getElementById('selectStage');
+    const allPerformances = document.querySelectorAll('#listPerformances .singlePerformance');
+    const allPerformancesContainer = document.getElementById('listPerformances')
+
+   function filterPerformances() {
+    const valDay = selectDay.value.trim();
+    const valStage = selectStage.value.trim();
+    const valGenre = selectGenre.value.trim().toLowerCase();
+
+    allPerformances.forEach(p => {
+        const day = p.querySelector('.dayPart').textContent.trim();
+        const stage = p.querySelector('.stagePart').textContent.trim();
+        const genreInput = p.querySelector('.genre');
+        const genreText = genreInput ? genreInput.value.trim().toLowerCase() : '';
+
+        const matchDay = valDay === '' || day === valDay;
+        const matchStage = valStage === '' || stage === valStage;
+        const matchGenre = valGenre === '' || genreText.includes(valGenre);
+
+        if (matchDay && matchStage && matchGenre) {
+            p.style.display = '';
+        } else {
+            p.style.display = 'none';
+        }
+    });
+
+    const existingMessage = document.getElementById('noShowMessage');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+
+    const visiblePerformances = Array.from(allPerformances).filter(el => el.offsetParent !== null);
+    console.log(visiblePerformances)
+
+    if (visiblePerformances.length === 0) {
+        const messageElement = document.createElement('li');
+        messageElement.id = 'noShowMessage';
+        messageElement.textContent = 'No show found';
+        messageElement.style.listStyle = 'none';
+        messageElement.classList.add('singlePerformance')
+        allPerformancesContainer.appendChild(messageElement);
+    }
+
+
+}
+
+    selectDay.addEventListener('change', filterPerformances);
+    selectStage.addEventListener('change', filterPerformances);
+    selectGenre.addEventListener('change', filterPerformances); // anche per il genere
+
+
+    });
+
+
+    </script>
+    {% endblock %}

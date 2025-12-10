@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block styles %} 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/error.css') }}" />
+
+{% endblock %}
+
+{% block main%}
+    <section class="errorMessages">
+        <h1 class="staatliches-regular">
+            Something went Wrong :/
+        </h1>
+        {% if error %}
+        <h4 class="lexend-500">{{error}}</h4>
+        {% endif %}
+    </section>
+
+{% endblock %}

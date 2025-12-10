@@ -1,0 +1,114 @@
+.image {
+    margin-top: 10px;
+    height: 450px;  
+    width: 450px;
+    border: 1px solid gray;
+    border-radius: 5%;
+    overflow: hidden;
+    position: relative;
+}
+
+.image button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    border-color: #F24B4B;
+    color: #F24B4B;
+}
+
+.image button:hover {
+    background-color: #F24B4B;
+    color: white;
+    border-color: #F24B4B;
+}
+
+
+.newFile {
+    display: none;
+}
+
+.infoTicket {
+    position: relative;
+}
+
+.infoTicket svg.ticket-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    pointer-events: none;
+    width: 100%;
+    height: 600px;
+    z-index: 0;
+}
+
+.infoElement {
+    position: relative;
+    z-index: 1; /* testo davanti */
+    margin-left: 30%;
+    margin-top: 20%;
+}
+
+.infoElement h3 {
+    font-size: 40px;
+}
+
+.lineTicket {
+    display: flex;
+    flex-direction: row;
+    gap: 30px
+}
+
+.lineTicket p.staatliches-regular {
+    font-size: 30px;
+}
+
+.lineTicket p.lexend-500 {
+    margin-top: 3%;
+}
+
+.editablePerformances {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.artistName {
+    flex-grow: 1;
+}
+
+.actions {
+    margin-top: 1%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.draftPerformance {
+    cursor:auto;
+}
+
+.delete {
+    color: #F24B4B;
+}
+
+.delete:hover, .edit:hover {
+    text-decoration: underline;
+}
+
+.ticketStats {
+    width: 100%;
+    height: 50%;
+}
+
+.ticketStats h2 {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.ticketStats svg {
+    width: 100%;
+    margin-bottom: 10%;
+}

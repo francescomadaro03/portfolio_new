@@ -1,0 +1,6 @@
+L’applicazione è stata progettata esclusivamente per un utilizzo desktop. Il design si ispira e rielabora il concept originale, disponibile al seguente link:
+https://dribbble.com/shots/15376423-Rich-Music-Website
+
+Non è stata implementata una versione responsive, poiché è stata preferita una scelta stilistica più innovativa e anticonvenzionale rispetto ai tradizionali layout adattivi.
+
+Il festival rappresentato è il Montreux Jazz Festival, evento reale, con le date opportunamente modificate per rispettare le specifiche del progetto.

@@ -1,0 +1,29 @@
+
+.tickets {
+    height: 100%;
+}
+.ticketInfo {
+    display: none;
+}
+.singleTicket:hover {
+    height: 300px;
+    border-color: transparent;
+    box-shadow: 2px 2px 10px  #F24B4B;
+}
+
+.singleTicket:hover .ticketName {
+    margin-left: 5%;
+}
+
+.singleTicket:hover .ticketInfo {
+    display: block;
+    width: 60%;
+;
+}
+
+.buyNow {
+    text-decoration: none;
+    list-style: none;
+    color: #F24B4B;
+    margin-left: 0;
+}

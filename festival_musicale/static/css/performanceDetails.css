@@ -1,0 +1,21 @@
+
+
+.performanceDetails h2 {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.imageBox {
+    
+    width: 100%;
+    box-shadow: 5px 5px 10px #F24B4B, 8px 8px 12px black;
+    margin-bottom: 5%
+}
+
+.imageBox img {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 22%;
+    box-shadow: 2px 2px 5px rgb(0, 0, 5);
+
+}
